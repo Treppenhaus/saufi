@@ -1,0 +1,141 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=, initial-scale=1.0">
+        <title>saufi</title>
+        <script type="text/javascript" src="dares.js"></script>
+        <link rel="stylesheet" href="saufi.css">
+        <script>
+            let players = [];
+            let repeating = false;
+            let availableDares = [...dares];
+
+            add = () => {
+                let input = document.getElementById("playernamex");
+                let name = input.value;
+                input.value = "";
+                if(name.length > 0 && !players.includes(name)) {
+                    addplayer(name);
+                }
+                console.log(players);
+                
+            }
+            addplayer = (playername) => {
+                const container = document.createElement("div");
+                const pname = document.createElement("p");
+                pname.appendChild(document.createTextNode(playername));
+                const button = document.createElement("button");
+                button.appendChild(document.createTextNode("-"));
+
+                button.setAttribute("onclick", "delplayer('"+playername+"')");
+                container.setAttribute("id", playername);
+                pname.classList.add("name");
+                container.classList.add("player");
+                button.classList.add("remove-player");
+
+                container.appendChild(pname);
+                container.appendChild(button);
+                
+                document.getElementById("players").appendChild(container);
+                players.push(playername);
+            }
+
+            delplayer = (playername) => {
+                const container = document.getElementById(playername);
+                container.remove();
+                players.splice(players.indexOf(playername), 1);
+            }
+
+            startgame = () => {
+
+                if(players.length < 2) {
+                    alert("Du benötigst mindestens 2 Spieler!");
+                    return;
+                }
+
+                repeating = document.getElementById("repeating-box").checked;
+                document.getElementById("start-view").classList.add("hidden");
+                document.getElementById("game-view").classList.remove("hidden");
+                console.log({settings: {repeating: repeating}});
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="content start-view" id="start-view">
+                <h2 class="title">Saufi</h2>
+                <div class="management">
+                    <h3>Spieler hinzufügen</h3>
+                    <input class="addp" type="username" id="playernamex" placeholder="Spielername">
+                    <button class="addp" onclick="add()">Hinzufügen</button>
+                    <br>
+                    <div class="checkboxes">
+    
+                        <input type="checkbox" name="Wiederholungen" id="repeating-box" checked=checked>
+                        <p class="checkbox-text">Wiederholungen</p>
+                        
+                    </div>
+                </div>
+                <div class="players" id="players">
+                    <h1>Spieler:</h1>
+                    <!--<div class="player">
+                        <p class="name">Spielername</p>
+                        <button class="remove-player">-</button>
+                    </div>-->
+                </div>
+                <div class="start-area">
+                    <button onclick="startgame()" class="start-button">Spiel starten!</button>
+                </div>
+                <div class="bottom">
+                    <a href="https://github.com/treppenhaus/saufi">Github</a>
+                </div>
+            </div>
+    
+    
+            <script>
+                function randInt(min, max) {  
+                    return Math.floor(
+                        Math.random() * (max - min + 1) + min
+                    )
+                }
+    
+                next = () => {
+                    if(availableDares.length == 0) {
+                        document.getElementById('dare').innerHTML = "Es sind keine weiteren Sachen verfügbar. Ihr habt alle "+ dares.length + " Sachen gehabt.";
+                        return;
+                    }
+    
+                    let n = randInt(0, availableDares.length - 1);
+                    let dare = availableDares[n]
+                    let player = players[randInt(0, players.length - 1)]
+                    dare = dare.replace('{player}', player);
+                    document.getElementById('dare').innerHTML = dare;
+                    
+                    if(!repeating) {
+                       availableDares.splice(n, 1);
+                    }
+                }
+            </script>
+            <div class="saufi-view hidden" id="game-view">
+                <a class="saufi-link" href="https://saufi.giveme.pizza">saufi.giveme.pizza</a>
+                <div class="saufi">
+                    <div class="center-box">
+                        <p id="dare">los geht's!</p>
+                        <button class="next-button" onclick="next()">weiter</button>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <script>
+                /*
+                addplayer("Emma");
+                addplayer("Sarah");
+                addplayer("Chiara");
+                startgame();*/
+    
+            </script>
+        </div>
+    </body>
+</html>

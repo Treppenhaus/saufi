@@ -1,0 +1,160 @@
+
+:root {
+    --background: #000;
+    --contrast: #929292;
+    --text: #fff;
+    --highlight: #df6d6d;
+    --link: #599ad6;
+}
+
+.wrapper {
+    /*for use on pc so the UI is not completely messed up*/
+    max-width: 400px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+.content {
+    border: 1px solid #000;
+}
+
+input {
+    border: 1px solid #000;
+}
+
+.remove-player {
+    height: 30px;
+    width: 30px
+}
+
+.hidden {
+    display: none;
+}
+
+.player {
+    display: grid;
+    grid-template-columns: auto 30px;
+    max-width: 60%;
+    text-align: left;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+hr {
+    margin: 10vh 0 10vh 0;
+}
+
+.start-area {
+    margin: 5vh 0 5vh 0;
+}
+
+body {
+    background-color: var(--background);
+}
+
+.start-view {
+    height: 100%;
+    font-family: sans-serif;
+    background: var(--background);
+    color: var(--text);
+    text-align: center;
+}
+
+.title {
+    margin: 10px;
+}
+
+a {
+    color: var(--link);
+}
+
+.players h1 {
+    margin-bottom: max(10px, 3vh);
+}
+
+.start-button {
+    height: 10vh;
+    width: max(80%, 25vh);
+    font-size: larger;
+}
+
+.management {
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 5% 0 5% 0;
+}
+
+.addp {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    height: 4vh;
+}
+
+.start-view input, .start-view button {
+    background: var(--background);
+    color: var(--text);
+    border: 1px solid var(--text);
+    box-sizing: border-box;
+}
+
+.saufi-view {
+    height: 100%;
+    background: var(--background);
+    color: var(--text);
+
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.saufi-link {
+    text-decoration: none;
+    color: var(--contrast);
+    font-weight: lighter;
+    font-size: max(2vh, 2vw);
+}
+
+.saufi {
+    position: relative;
+    display: block;
+    left: 50%;
+    top: 45vh;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 80vw;
+
+}
+
+.checkboxes {
+    display: grid;
+    grid-template-columns: 10% auto;
+    max-width: 60vw;
+    text-align: left;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.checkboxes * {
+    margin: 3px;
+}
+
+.next-button {
+    width: 25vw;
+    height: 10vw;
+    margin: max(10px, 2vw);
+    background: var(--background);
+    color: var(--text);
+    border: 1px solid var(--text);
+}
+
+.center-box p {
+    margin-top: max(10px, 4vw);
+}
+
