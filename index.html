@@ -115,7 +115,17 @@
                     if(!repeating) {
                        availableDares.splice(n, 1);
                     }
+                    refreshcounter(dares.length - availableDares.length, dares.length);
                 }
+
+                refreshcounter = (current, max) => {
+                    if(!repeating) {
+                        let newval = current + " / " + max;
+                        document.getElementById('counterbox').innerHTML = newval;
+                    }
+                }
+
+
             </script>
             <div class="saufi-view hidden" id="game-view">
                 <a class="saufi-link" href="https://saufi.giveme.pizza">saufi.giveme.pizza</a>
@@ -123,6 +133,7 @@
                     <div class="center-box">
                         <p id="dare">los geht's!</p>
                         <button class="next-button" onclick="next()">weiter</button>
+                        <p id="counterbox">2/100</p>
                     </div>
                 </div>
             </div>
@@ -133,7 +144,8 @@
                 addplayer("Emma");
                 addplayer("Sarah");
                 addplayer("Chiara");
-                startgame();*/
+                startgame();
+                repeating = false;*/
     
             </script>
         </div>
