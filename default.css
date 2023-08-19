@@ -1,0 +1,28 @@
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+    position: relative;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+
+
+.footnote {
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.footnote a {
+    color: var(--normal);
+}

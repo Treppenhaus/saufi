@@ -1,0 +1,44 @@
+.head {
+    text-align: center;
+}
+
+.title {
+    margin-top: 6vh;
+    font-size: 4vh;
+    text-decoration: bold;
+}
+
+.field {
+    width: 90vw;
+    left: 50%;
+    margin-top: 11vh;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+a.button div {
+    min-height: 6vh;
+    min-width: 70vw;
+    border: 1px solid var(--text);
+    box-sizing: border-box;
+}
+
+a.highlighted div {
+    border: 1px solid rgb(212, 161, 208);
+}
+
+a.gray div {
+    border: 1px solid #929292;
+    color: #929292;
+}
+
+a.button div:hover {
+    background-color: var(--text);
+    color: var(--background);
+}
+
+a.button div p {
+    font-size: 2vh;
+    margin-top: 3vh;
+    transform: translateY(-50%);
+}

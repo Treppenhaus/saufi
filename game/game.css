@@ -1,0 +1,88 @@
+.head {
+    text-align: center;
+}
+
+.title {
+    margin-top: 6vh;
+    font-size: 3vh;
+    text-decoration: bold;
+}
+
+.field {
+    width: 90vw;
+    left: 50%;
+    margin-top: 4vh;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#dare {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+}
+
+.next-button {
+    background-color: var(--background);
+    border: 1px solid var(--text);
+    box-sizing: border-box;
+    width: 80vw;
+    height: 6vh;
+    color: var(--text);
+    font-size: 2vh;
+}
+
+.next-button:active {
+    background-color: var(--text);
+    border: 1px solid var(--background);
+    transition-duration: .1s;
+}
+
+.center-box {
+    position: relative;
+    margin-top: 25vh;
+}
+
+.hidden {
+    display: none;
+}
+
+img.qr {
+    margin-top: 4vh;
+    width: 20vh;
+    width: 20vh;
+}
+
+.center-box p {
+    margin-top: max(10px, 4vw);
+}
+
+
+.qr-button img {
+    height: 5vh;
+    width: 5vh;
+    /*https://codepen.io/sosuke/pen/Pjoqqp*/
+    filter: invert(66%) sepia(2%) saturate(1488%) hue-rotate(215deg) brightness(110%) contrast(95%);
+}
+
+.qr-button {
+    position: fixed;
+    background-color: rgba(0, 128, 0, 0);
+    border: none;
+    top: 1%;
+    right: 1%;
+}
+.footnote {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+}
+
+.active-btn {
+    border: 1px solid white;
+    padding: 3px;
+}
+
+a {
+    color: var(--light);
+}

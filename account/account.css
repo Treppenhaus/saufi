@@ -1,0 +1,62 @@
+.head {
+    text-align: center;
+}
+
+.title {
+    margin-top: 6vh;
+    font-size: 4vh;
+    text-decoration: bold;
+}
+
+.field {
+    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.form {
+    margin: 5vh 0 5vh 0;
+}
+
+h1 {
+    color: var(--background);
+    padding: 2vh 0 2vh 0;
+}
+
+input {
+    margin-top: 2vh;
+    width: 80%;
+    height: 4vh;
+}
+
+.account-infos {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    text-align: left;
+}
+
+hr {
+    margin: 2vh 0 2vh 0;
+}
+
+a {
+    color: var(--light);
+    text-decoration: underline;
+}
+
+.delete-account {
+    color: #da7777;
+    text-decoration: underline;
+    margin-bottom: 0.4vh;
+}
+
+.games {
+    margin-top: 2vh;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: 30% auto 20%;
+    text-align: left;
+}

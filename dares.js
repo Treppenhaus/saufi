@@ -98,7 +98,6 @@ let dares = [
         "'The floor is lava!' Der Verlierer trinkt 3 Schlücke.",
         "Alle Roothaarigen trinken.",
         "{player} trinkt einen Schluck für jeden, der Mitspielt.",
-        "{player}",
         "Alle Frauen exen!",
         "Alle Singles trinken 2 Schlücke.",
         "Jeder, der vergeben ist, trinkt 1 Schluck.",
@@ -143,4 +142,15 @@ let dares = [
         "Jeder mit Abitur darf einen Schluck verteilen.",
         "Alle Blondinen trinken",
         "Alle, die kein Seepferdchen haben trinken, 1 Schluck."
+];
+let tod_truth = [
+    "{player} ruft tom an oder trinkt 2 schlücke",
+    "{player} trinkt einen Schluck wenn er/sie mit der Person zur rechten schlafen würde",
+    "{player} sagt seine/ihre Lieblingsposition oder trinkt 2 Schlücke",
+    "{player}, erzähle was deine Eltern niemals über dich erfahren sollten oder trinke 3 Schlücke",
+    "Wenn {player} nächste Runde trinkt, darf er/sie einen schluck verteilen",
+    "{player} trinkt einen Schluck ohne Arme",
+    "{player} nimmt einen großen Schluck in den Mund und singt ein Lied(/teil)",
+    "{player} erzählt einen Witz mit einem Schluck im Mund",
+    "{player} muss die nächsten 3 Runden die letzten zwei Wörter von jedem Satz wiederholen."
 ]

@@ -1,0 +1,18 @@
+:root {
+    /*
+    QR CODE COLOR IS NOT HERE
+    AND QR CODE IMAGE COLOR
+    
+    */
+    --background: #352F44;
+    --normal: #5C5470;
+    --light: #B9B4C7;
+    --text: #FAF0E6;
+
+    /*
+    --background: #27374D;
+    --normal: #526D82;
+    --light: #9DB2BF;
+    --text: #DDE6ED;
+    */
+}

@@ -1,14 +1,16 @@
+<?php include_once "../main.php";?>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=, initial-scale=1.0">
         <title>saufi</title>
-        <script type="text/javascript" src="dares.js"></script>
-        <link rel="stylesheet" href="saufi.css">
+        <link rel="stylesheet" href="../colors.css">
+        <link rel="stylesheet" href="../default.css">
+        <link rel="stylesheet" href="newgame.css">
+        <?php icon()?>
         <script>
             let players = [];
             let repeating = false;
-            let availableDares = [...dares];
 
             add = () => {
                 let input = document.getElementById("playernamex");
@@ -18,8 +20,8 @@
                     addplayer(name);
                 }
                 console.log(players);
-                
             }
+
             addplayer = (playername) => {
                 const container = document.createElement("div");
                 const pname = document.createElement("p");
@@ -52,29 +54,63 @@
                     alert("Du benötigst mindestens 2 Spieler!");
                     return;
                 }
-
                 repeating = document.getElementById("repeating-box").checked;
-                document.getElementById("start-view").classList.add("hidden");
-                document.getElementById("game-view").classList.remove("hidden");
                 console.log({settings: {repeating: repeating}});
+
+                // now create game in database:
+                let strplayers = "";
+                for(let i = 0; i < players.length; i++) {
+                    strplayers += players[i];
+                    if(i < players.length - 1) {
+                        strplayers += ";"
+                    }
+                } 
+    
+                let requrl = "./creategame.php?settings="+strplayers+":"+ (repeating ? "1" : "0");
+
+                if(window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+                else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                xmlhttp.onreadystatechange = () => {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                        let res = xmlhttp.responseText;
+                        // on response
+                        if(!res.includes("game_ok")) {
+                            alert("something went wrong while creating the game, please try again. ):");
+                            return;
+                        }
+
+                        res = res.split(";");
+                        let gameid = res[0];
+                        let adminpw = res[1];
+                        newurl = "../game?gid="+gameid+"&a="+adminpw;
+                        window.location.replace(newurl);
+                    }
+                }
+                xmlhttp.open("GET", requrl, false);
+                xmlhttp.send();
             }
 
         </script>
     </head>
     <body>
         <div class="wrapper">
-            <div class="content start-view" id="start-view">
-                <h2 class="title">Saufi</h2>
+            <div class="head">
+                <a href="https://saufi.giveme.pizza/" class="link">saufi.giveme.pizza</a>
+                <p class="title">Saufi<?php 
+                $drinks = array("🍷", "🍾", "🍸", "🍹", "🍺", "🍻", "🥂", "🥃", "🥤");
+                echo $drinks[rand(0,count($drinks)-1)];
+            ?></p>
+            </div>
+
+            <div class="field">
                 <div class="management">
                     <h3>Spieler hinzufügen</h3>
                     <input class="addp" type="username" id="playernamex" placeholder="Spielername">
                     <button class="addp" onclick="add()">Hinzufügen</button>
                     <br>
                     <div class="checkboxes">
-    
                         <input type="checkbox" name="Wiederholungen" id="repeating-box" checked=checked>
                         <p class="checkbox-text">Wiederholungen</p>
-                        
                     </div>
                 </div>
                 <div class="players" id="players">
@@ -87,67 +123,9 @@
                 <div class="start-area">
                     <button onclick="startgame()" class="start-button">Spiel starten!</button>
                 </div>
-                <div class="bottom">
-                    <a href="https://github.com/treppenhaus/saufi">Github</a>
-                </div>
             </div>
+            <p class="footnote"><a href="../register" class="already-registered">Register</a> | <a href="../" class="already-registered">Home</a> | <a href="../support" class="already-registered">Support Me</a> | <a href="../privacy" class="already-registered">Privacy</a></p>
     
-    
-            <script>
-                function randInt(min, max) {  
-                    return Math.floor(
-                        Math.random() * (max - min + 1) + min
-                    )
-                }
-    
-                next = () => {
-                    if(availableDares.length == 0) {
-                        document.getElementById('dare').innerHTML = "Es sind keine weiteren Sachen verfügbar. Ihr habt alle "+ dares.length + " Sachen gehabt.";
-                        return;
-                    }
-    
-                    let n = randInt(0, availableDares.length - 1);
-                    let dare = availableDares[n]
-                    let player = players[randInt(0, players.length - 1)]
-                    dare = dare.replace('{player}', player);
-                    document.getElementById('dare').innerHTML = dare;
-                    
-                    if(!repeating) {
-                       availableDares.splice(n, 1);
-                    }
-                    refreshcounter(dares.length - availableDares.length, dares.length);
-                }
-
-                refreshcounter = (current, max) => {
-                    if(!repeating) {
-                        let newval = current + " / " + max;
-                        document.getElementById('counterbox').innerHTML = newval;
-                    }
-                }
-
-
-            </script>
-            <div class="saufi-view hidden" id="game-view">
-                <a class="saufi-link" href="https://saufi.giveme.pizza">saufi.giveme.pizza</a>
-                <div class="saufi">
-                    <div class="center-box">
-                        <p id="dare">los geht's!</p>
-                        <button class="next-button" onclick="next()">weiter</button>
-                        <p id="counterbox">2/100</p>
-                    </div>
-                </div>
-            </div>
-    
-    
-            <script>
-                /*
-                addplayer("Emma");
-                addplayer("Sarah");
-                addplayer("Chiara");
-                startgame();
-                repeating = false;*/
-    
-            </script>
         </div>
     </body>
 </html>

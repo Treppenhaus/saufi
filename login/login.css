@@ -1,0 +1,42 @@
+.head {
+    text-align: center;
+}
+
+.title {
+    margin-top: 6vh;
+    font-size: 4vh;
+    text-decoration: bold;
+}
+
+.field {
+    border-radius: 2vh;
+    color: var(--normal);
+    width: 90vw;
+    height: 40vh;
+    left: 50%;
+    margin-top: 11vh;
+    transform: translateX(-50%);
+    background-color: #fff;
+    text-align: center;
+}
+
+.form {
+    margin: 5vh 0 5vh 0;
+}
+
+h1 {
+    color: var(--background);
+    padding: 2vh 0 2vh 0;
+}
+
+input {
+    margin-top: 2vh;
+    width: 80%;
+    height: 4vh;
+}
+
+.error-message {
+    text-align: center;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
