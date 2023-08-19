@@ -3,7 +3,6 @@
 session_start();
 include_once "Db.php";
 $db = new Db("127.0.0.1", "root", "", "saufi");
-$db2 = new Db("127.0.0.1", "root", "", "saufi");
 
 function isLoggedIn() {
     return isseT($_SESSION["nickname"]);

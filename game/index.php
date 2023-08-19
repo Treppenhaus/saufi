@@ -54,7 +54,7 @@ if($admin) {
     }
 }
 
-$qrcodeurl = "https://beta.saufi.giveme.pizza/game/?gid=$gameid";
+$qrcodeurl = "https://saufi2.giveme.pizza/game/?gid=$gameid";
 //$qrcodeurl = "https://10.0.0.222/saufi/game/?gid=$gameid";
 
 ?>
