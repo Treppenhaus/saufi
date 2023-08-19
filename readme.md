@@ -1,6 +1,9 @@
 ## what is this??
 
 
+php😭😭😭😭😭
+
+
 saufi is a german drinking game, you put in your usernames and just do what the app tells you.
 you can play this at [https://saufi.giveme.pizza/](https://saufi.giveme.pizza/)
 
