@@ -11,6 +11,7 @@
         <script>
             let players = [];
             let repeating = false;
+            let slidervalue = 1;
 
             add = () => {
                 let input = document.getElementById("playernamex");
@@ -65,8 +66,7 @@
                         strplayers += ";"
                     }
                 } 
-    
-                let requrl = "./creategame.php?settings="+strplayers+":"+ (repeating ? "1" : "0");
+                let requrl = "./creategame.php?settings="+strplayers+":"+ (repeating ? "1" : "0")+":"+slidervalue;
 
                 if(window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
                 else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -97,20 +97,47 @@
             <div class="head">
                 <a href="https://saufi.giveme.pizza/" class="link">saufi.giveme.pizza</a>
                 <p class="title">Saufi<?php 
-                $drinks = array("🍷", "🍾", "🍸", "🍹", "🍺", "🍻", "🥂", "🥃", "🥤");
-                echo $drinks[rand(0,count($drinks)-1)];
-            ?></p>
+                    $drinks = array("🍷", "🍾", "🍸", "🍹", "🍺", "🍻", "🥂", "🥃", "🥤");
+                    echo $drinks[rand(0,count($drinks)-1)];?>
+                </p>
             </div>
 
             <div class="field">
                 <div class="management">
-                    <h3>Spieler hinzufügen</h3>
-                    <input class="addp" type="username" id="playernamex" placeholder="Spielername">
-                    <button class="addp" onclick="add()">Hinzufügen</button>
+                    <div class="playersettings">
+                        <h3>Spieler hinzufügen</h3>
+                        <input class="addp" type="username" id="playernamex" placeholder="Spielername">
+                        <button class="addp" onclick="add()">Hinzufügen</button>
+                    </div>
                     <br>
-                    <div class="checkboxes">
-                        <input type="checkbox" name="Wiederholungen" id="repeating-box" checked=checked>
-                        <p class="checkbox-text">Wiederholungen</p>
+                    <hr>
+                    <br>
+                    <div class="gamesettings">
+                        <h3>Einstellungen</h3>
+                        <div class="checkboxes">
+                            <input type="checkbox" name="Wiederholungen" id="repeating-box" checked=checked>
+                            <p class="checkbox-text">Wiederholungen</p>
+                        </div>
+                        <br>
+                        <h3>Multiplikator</h3>
+                        <p class="note">Wie ehrenlos seid ihr?</p>
+                        <input type="range" min="0.2" max="6" value="1.0" class="slider" step="0.5" id="multiplyslider">
+                        <p id="sliderrange">x1.0</p>
+                        <script>
+                            let slider = document.getElementById("multiplyslider");
+                            let out = document.getElementById("sliderrange");
+                            slider.oninput = () => {
+                                if(slider.value == 0.2) {
+                                    slidervalue = 0.2;
+                                }
+                                else {
+                                    slidervalue = Math.round((slider.value -0.2) * 10) / 10;
+                                }
+                                out.innerHTML = "x"+slidervalue;
+                                console.log("slidervalue", slidervalue);
+                            };
+
+                        </script>
                     </div>
                 </div>
                 <div class="players" id="players">
@@ -120,6 +147,9 @@
                         <button class="remove-player">-</button>
                     </div>-->
                 </div>
+                <br>
+                <hr>
+                <br>
                 <div class="start-area">
                     <button onclick="startgame()" class="start-button">Spiel starten!</button>
                 </div>

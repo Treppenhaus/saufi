@@ -7,8 +7,8 @@ include_once "../main.php";
  *  - other players can VIEW (not join) the game using a link containing the game-id
 
 
-* creategame.php?settings=player1;player2;player3:1
-* ^url                        ^players            ^settings (repeat=1)
+* creategame.php?settings=player1;player2;player3:1:0.9
+* ^url                        ^players            ^settings (repeat=1)(multiplicator=0.9)
 
  */
 
@@ -20,6 +20,7 @@ if(!isset($_GET["settings"])) {
 $data = $_GET["settings"];
 $data = explode(":", $data);
 $players = explode(";", $data[0]);
+$multiplicator = $data[2];
 $repeating = $data[1] == "1";
 
 // all data has been gathered
@@ -51,7 +52,6 @@ function createAdminCode() {
 
 $admincode = createAdminCode();
 $timestamp = time();
-$multiplicator = 1.0;
 $nsfw = false;
 
 // this is all information we theoretically got at this point
@@ -97,6 +97,7 @@ foreach($players as $playername) {
     $db -> query($q);
     echo ";$playername";
 }
+echo";$multiplicator";
 
 // everything is done, the game was created and saved to the database
 // the database can now be accessed.

@@ -205,6 +205,12 @@ $qrcodeurl = "https://saufi2.giveme.pizza/game/?gid=$gameid";
                             <a href="../history/?gid=<?php echo $gameid;?>">verlauf ansehen</a>
                         </div>
 
+                        <br>
+                        <?php 
+                        if($multiply != 1) {
+                            echo "<p>x$multiply</p>";
+                        }
+                        ?>
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=000&margin=15&data=<?php echo $qrcodeurl;?>" alt="qr code image" id="qr" class="qr hidden">
 
                     </div>
