@@ -219,7 +219,7 @@ $qrcodeurl = "https://saufi2.giveme.pizza/game/?gid=$gameid";
         
             <p class="footnote"><a href="../register" class="already-registered">Register</a> | <a href="../" class="already-registered">Home</a> | <a href="../support" class="already-registered">Support Me</a> | <a href="../privacy" class="already-registered">Privacy</a></p>
     
-            <button class="qr-button" id="qr-button"><img src="../qr.png" alt="" onclick="qr()"></button>
+            <button class="qr-button" id="qr-button"><img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=000&margin=15&data=https://saufi2.giveme.pizza/" alt="" onclick="qr()"></button>
         </div>
     </body>
 </html>
